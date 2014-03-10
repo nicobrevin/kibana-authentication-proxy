@@ -3,7 +3,7 @@ module.exports =  {
     ////////////////////////////////////
     // ElasticSearch Backend Settings
     ////////////////////////////////////
-    "es_host": "localhost",  // The host of Elastic Search
+    "es_host": "192.168.33.45", // use ssh tunnel "192.168.3.210",  // The host of Elastic Search
     "es_port": 9200,  // The port of Elastic Search
     "es_using_ssl": false,  // If the ES is using SSL(https)?
     "es_username":  "",  // The basic authentication user of ES server, leave it blank if no basic auth applied
@@ -14,7 +14,7 @@ module.exports =  {
     // Proxy server configurations
     ////////////////////////////////////
     // Which port listen to
-    "listen_port": 9201,
+    "listen_port": 9202,
     // Enable SSL protocol
     "enable_ssl_port": false,
         // The following settings are valid only when enable_ssl_port is true
@@ -36,8 +36,8 @@ module.exports =  {
     // Config "kibana_es_index": "kibana-int-for-%user%", "which_auth_type_for_kibana_index": "basic"
     // will use kibana index settings like "kibana-int-for-demo1", "kibana-int-for-demo2" for user demo1 and demo2.
     // in this case, if you enabled both Google Oauth2 and BasicAuth, and the username of BasicAuth is the boss.
-    "kibana_es_index": "kibana-int", // "kibana-int-%user%"
-    "which_auth_type_for_kibana_index": "cas", // google, cas or basic
+    "kibana_es_index": "kibana-int-%user%",
+    "which_auth_type_for_kibana_index": "basic", // google, cas or basic
 
     ////////////////////////////////////
     // Security Configurations
@@ -73,12 +73,13 @@ module.exports =  {
     // The following config is different from the previous basic auth settings.
     // It will be applied on the client who access kibana3.
     // Enable? true or false
-    "enable_basic_auth": false,
+    "enable_basic_auth": true,
         // Multiple user/passwd supported
         // The User&Passwd list for basic auth
         "basic_auth_users": [
             {"user": "demo1", "password": "pwd1"},
-            {"user": "demo1", "password": "pwd2"},
+            {"user": "demo2", "password": "pwd2"},
+            {"user": "admin", "password": "admin"},
         ],
 
 
@@ -88,5 +89,16 @@ module.exports =  {
     "enable_cas_auth": false,
         // Point to the CAS authentication URL
         "cas_server_url": "https://point-to-the-cas-server/cas",
+
+  "users_groups": {
+    "admin": ["admin"],
+    "demo1": ["test1"],
+    "demo2": ["test2"],
+  },
+
+  "groups_aliases": {
+    "test1": ["alias1"],
+    "test2": ["alias2"],
+  },
 
 };
