@@ -96,7 +96,7 @@ module.exports =  {
     "demo2": ["test2"],
   },
 
-  "groups_aliases": {
+  "groups_indices": {
     "test1": ["alias1"],
     "test2": ["alias2"],
   },
