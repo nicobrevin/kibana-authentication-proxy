@@ -97,7 +97,7 @@ module.exports =  {
   },
 
   "groups_indices": {
-    "test1": ["alias1"],
+    "test1": ["alias1-%date-pattern%"],
     "test2": ["alias2"],
   },
 
